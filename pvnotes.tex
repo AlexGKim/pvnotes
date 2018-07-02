@@ -1,0 +1,211 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amsmath}
+
+\title{Peculiar Velocity Notes}
+\author{Alex Kim}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+
+\section{Real and Redshift-Space Distances}
+Distances  are conveniently expressed
+in terms of cosmological redshift.
+This distance is denoted as $r$, to signify that this is in real space.
+Traditionally we rely on the cosmological redshift to translate to distances
+through
+\begin{align}
+\chi & = \int_{t_e}^{t_o} \frac{dt}{a(t)} \\
+&= \int_{0}^{r} \frac{dz}{H(z)}.
+\end{align}
+For example at small distances we get the familiar $r=H(0) \chi$ Hubble law.
+
+The proper peculiar velocity of a galaxy at position $\mathbf{r}_o$ is
+\begin{equation}
+\mathbf{v} = \frac{a\,d\mathbf{r}}{dt}= \frac{d\mathbf{r}}{d\tau},
+\end{equation}
+where $\tau$ is the conformal time.  ``Proper'' means that it is the velocity as
+measured by a local observer.
+
+Such a local observer positioned between us and the galaxy receives 
+light with  Doppler redshift $z_v$ due to the radial
+velocity component $v=\mathbf{v} \cdot  \mathbf{\hat{r}}_o$.
+That light getting to us also experiences the cosmological redshift, so  the redshift $s$
+arriving to the CMB-frame observer gets is 
+\begin{equation}
+(1+s)  = (1+r)(1+z_p).
+\end{equation}
+
+For low redshift and small peculiar velocities the first order expression is
+\begin{equation}
+s  = r +v.
+\end{equation}
+In this domain people often express $r$ and $z_p$ in velocity units.
+
+
+\section{Standard Candle Information}
+The measurements of a standard candle are
+\begin{itemize}
+\item Angular coordinates RA and Dec.  This direction is denoted as $\mathbf{\hat{r}}_o$.
+\item Redshift $s$. In the case of SNe~Ia, the redshift of the host-galaxy is useful for our purposes.
+\item Magnitude $m$.
+\end{itemize}
+
+Given a cosmological model, we can associate the observed magnitude
+with a cosmological distance.  The observed magnitude is
+\begin{align}
+m & =M + \mu(r) \\
+\mu & = 5\log{
+	\left(
+		\frac{(1+r)\chi(r)}{10 \text pc}
+	\right)
+},
+\end{align}
+where $M$ is the absolute magnitude and
+ $r$ is the redshift that
+we use as a cosmological distance.  
+\begin{itemize}
+\item The radial component $v$ of the peculiar velocity  can be derived from the above through
+the Doppler redshift $z_p$.
+\begin{align}
+z_p & = \frac{s-r}{1+r}\\
+v & = \frac{(1+z_p)^2-1}{(1+z_p)^2+1}.
+\end{align}
+\end{itemize}
+
+Given a cosmological model, a standard candle with magnitude $m$ is expected
+to be at redshift $r$.  Any difference between that and the observer redshift $s$ is a
+``peculiar velocity''.
+It is useful to consider an alternative point of view.   Given a cosmological model, a standard candle with observed
+redshift $s$ is expected to have magnitude $M+\mu(s)$.
+Any difference between that and the observer magnitude $m$ is a
+``peculiar magnitude'' $\delta m$.  Since $m$ is directly measured, it is convenient to work with
+peculiar magnitudes in the analysis.
+At low-redshift,  the peculiar velocity and peculiar magnitude
+are related by
+\begin{align}
+\delta m & \approx -\frac{5}{\ln{10}}\frac{v}{aH\chi(r)}\\
+& = -\frac{5}{\ln{10}}\frac{(1+r)^2v}{Hd_L(r)}. 
+\end{align}
+
+
+
+While the data provides both real and redshift-space distances $r$ and $s$ the uncertainty in
+$s$, when determined spectroscopically, is exceedingly small compared to the uncertainty in $r$.
+Uncertainties in the absolute magnitude  $M$ in particular limit how well $r$ can be
+determined.  So the data is most naturally considered in redshift-space.
+
+\section{Velocities and Overdensities Connected Through Fluid Mechanics}
+
+The motion of the cosmological (incompressible) pressureless matter
+fluid depends on overdensitites as described by the continuity, Euler
+(momentum conservation), and Poisson equations
+\begin{equation}
+\frac{\partial \delta}{\partial \tau} + \nabla \cdot [(1+\delta)\mathbf{v}]=0
+\end{equation}
+\begin{equation}
+\frac{\partial a \mathbf{v}}{a\partial \tau} + \mathbf{v} \cdot \nabla \mathbf{v} = - \nabla \phi
+\end{equation}
+\begin{equation}
+\nabla^2\phi=\frac{3}{2} \Omega_MH^2a^2\delta.
+\end{equation}
+
+The first two  equations to linear order are.
+\begin{equation}
+\frac{\partial \delta}{\partial \tau} + \nabla \cdot \mathbf{v}=0
+\end{equation}
+\begin{equation}
+\frac{\partial a \mathbf{v}}{a\partial \tau} = - \nabla \phi
+\end{equation}
+
+Two important implication of the linear equations are:
+\begin{itemize}
+\item The peculiar velocity $\mathbf{v}$ today is irrotationlal. The Euler equation gives that the rotational component of $\mathbf{v}$ goes as $a^{-1}$ and so decays away.
+\item The density field can be separated
+\begin{equation}
+\delta (\mathbf{r},\tau)  = D(\tau) \delta (\mathbf{r},\tau_0),
+\end{equation}
+$D(\tau)$ is called the linear growth factor.  The second order differential equation
+gives two solutions for $D$, it is taken as the growing mode.
+For calculations $\tau_0$ is often taken to be at the surface of last scattering;
+to simplify notation it is omitted from here on.
+\item Then the continuity equation can be expressed in terms of $D$
+\begin{equation}
+Haf\delta(\mathbf{r}) + \nabla \cdot \mathbf{v}=0,
+\label{rv:eqn}
+\end{equation}
+where
+\begin{equation}
+f \equiv \frac{d \ln{D}}{d\ln{a}}.
+\end{equation}
+This equation says that the density perturbations at the surface of last scattering $\delta(\mathbf{r})$
+is related to the resulting evolved peculiar velocity field with a factor $Haf$.
+\end{itemize}
+
+\section{Fourier Space}
+In Fourier space, Eq.~\ref{rv:eqn} becomes
+\begin{equation}
+Haf\delta(\mathbf{k})  + \mathbf{k} \cdot \mathbf{v}(\mathbf{k})=0,
+\end{equation}
+which has the solution
+\begin{equation}
+ \mathbf{v}(\mathbf{k},r) = Haf \frac{i\mathbf{k}}{k^2} \delta(\mathbf{k},r).
+\end{equation}
+The Fourier transform of the projected radial velocity is then
+\begin{equation}
+v(\mathbf{k},r) = Haf \frac{i\mu}{k} \delta(\mathbf{k},r),
+\label{dvfourier:eqn}
+\end{equation}
+where $\mu = \mathbf{\hat{r}} \cdot \mathbf{\hat{k}}$ that describes the angle between the line of sight and the wave vector.
+I make explicit the cosmological redshift at which the fluid mechanics is considered.
+
+For our purposes, we are interested in the statistical properties of the fields.  When the fields are Normally distributed
+(in the linear regime) these properties are
+captured by the power spectra
+\begin{align}
+\langle \delta(\mathbf{k},r)  \delta^{\star}(\mathbf{k'},r') \rangle &  = (2\pi)^3 P_{\delta \delta}(\mathbf{k}) \delta(\mathbf{k} -\mathbf{k'})\\ 
+\langle \delta(\mathbf{k},r)  v^{\star}(\mathbf{k'},r') \rangle &  = (2\pi)^3 P_{\delta v}(\mathbf{k}, \mathbf{r'}) \delta(\mathbf{k} -\mathbf{k'})\\ 
+\langle v(\mathbf{k},r)  v^{\star}(\mathbf{k'},r') \rangle &  = (2\pi)^3 P_{vv}(\mathbf{k},  \mathbf{r}, \mathbf{r'}) \delta(\mathbf{k} -\mathbf{k'}).
+\end{align}
+
+Theory, through programs like CAMB, can provide theoretical predictions for $P_{\delta \delta}$, which in turn can be used
+to predict the power spectra of the other quantities:
+from Eq.~\ref{dvfourier:eqn} the above power spectra are related
+\begin{equation}
+ P_{\delta \delta}(\mathbf{k})  = -\left( \frac{ik}{\mu' H(r')a(r')f(r')}\right) P_{\delta v}(\mathbf{k}, \mathbf{r'}) \ = k^2 \left( \frac{1}{\mu H(r)a(r)f(r)}\right)
+ \left( \frac{1}{\mu' H(r')a(r')f(r')}\right)  P_{vv}(\mathbf{k},r,r').
+\end{equation}
+
+The above calculations were done in real space, whereas we make our measurements in redshift space.  To first order
+the relationship between the real-space and redshift-space velocity
+power spectra and the real-space density power spectrum is the same.
+\begin{equation}
+P^s_{vv}(\mathbf{k}, \mathbf{s}, \mathbf{s'}) \approx P_{vv}(\mathbf{k}, \mathbf{r}, \mathbf{r'}) .
+\end{equation}
+
+The  velocity correlation function is then
+\begin{align}
+\xi_{v v}(\mathbf{r}_i,\mathbf{r}_j)  & = \int \frac{d^3k}{(2\pi)^3} e^{-i \mathbf{k}\cdot (\mathbf{r_i}-\mathbf{r_j})}  \left( \frac{\mu Haf}{k}\right) ^2 P_{\delta \delta}(k)\\
+& \times \frac{dD_i}{d\tau} \frac{dD_j}{d\tau} \int \frac{dk}{2\pi^2} P_{\delta \delta}(k,a=1)\sum_{l=0}^{\infty} (2l+1) j'_l(k\chi_i) j'_l(k\chi_j)
+[\mathcal{P}_l(\mathbf{\hat{r}}_i \cdot \mathbf{\hat{r}}_j) - \delta_{l0}].
+\end{align}
+
+\section{Correlation function in Redshift Space}
+Theory can predict the probability for the peculiar magnitdes for two positions
+$\mathbf{r}_i$ and $\mathbf{r}_j$.  To first order 
+\begin{align}
+\xi_{\delta m \delta m}(\mathbf{r}_i,\mathbf{r}_j)  & \equiv  \langle \delta m_i(\mathbf{r}_i) \delta m_j(\mathbf{r}_j) \rangle\\
+& =  \left( \frac{5}{\ln{10}}\right)^2 \frac{(1+r_i)^2}{Hd_L(r_i)} \frac{(1+r_j)^2}{Hd_L(r_j)}  \nonumber \\
+& \times \frac{dD_i}{d\tau} \frac{dD_j}{d\tau} \int \frac{dk}{2\pi^2} P_{\delta \delta}(k,a=1)\sum_{l=0}^{\infty} (2l+1) j'_l(k\chi_i) j'_l(k\chi_j)
+[\mathcal{P}_l(\mathbf{\hat{r}}_i \cdot \mathbf{\hat{r}}_j) - \delta_{l0}].
+\end{align}
+While the above derivation is based on $\chi(r)$ , the difference when using 
+ $\chi(s)$  is of second order.
+\end{document}  
