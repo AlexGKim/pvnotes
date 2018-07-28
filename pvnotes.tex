@@ -5,7 +5,7 @@
 %\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
-\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
 
 \title{Peculiar Velocity Notes}
 \author{Alex Kim}
@@ -16,10 +16,11 @@
 
 
 \section{Real and Redshift-Space Distances}
+\label{distances:sec}
 Distances  are conveniently expressed
 in terms of cosmological redshift.
 This distance is denoted as $r$, to signify that this is in real space.
-Traditionally we rely on the cosmological redshift to translate to distances
+A distance expressed as a cosmological redshift  translates to the conformal distance $\chi$
 through
 \begin{align}
 \chi & = \int_{t_e}^{t_o} \frac{dt}{a(t)} \\
@@ -34,15 +35,14 @@ The proper peculiar velocity of a galaxy at position $\mathbf{r}_o$ is
 where $\tau$ is the conformal time.  ``Proper'' means that it is the velocity as
 measured by a local observer.
 
-Such a local observer positioned between us and the galaxy receives 
+An observer positioned at $\mathbf{r}_o$ between us and the galaxy receives galaxy
 light with  Doppler redshift $z_v$ due to the radial
 velocity component $v=\mathbf{v} \cdot  \mathbf{\hat{r}}_o$.
 That light getting to us also experiences the cosmological redshift, so  the redshift $s$
-arriving to the CMB-frame observer gets is 
+arriving to the CMB-frame observer is 
 \begin{equation}
 (1+s)  = (1+r)(1+z_p).
 \end{equation}
-
 For low redshift and small peculiar velocities the first order expression is
 \begin{equation}
 s  = r +v.
@@ -58,43 +58,65 @@ The measurements of a standard candle are
 \item Magnitude $m$.
 \end{itemize}
 
-Given a cosmological model, we can associate the observed magnitude
-with a cosmological distance.  The observed magnitude is
+An important parameter that can derived from the data assuming a model is the cosmological distance $r$.
+Given a cosmological model, the observed magnitude of a standard candle is
 \begin{align}
-m & =M + \mu(r) \\
+m & =M + \mu(r; H_0, \Omega,\ldots) \\
+& = (M -5\log{H_0}) + (5\log{H_0}+ \mu(r; H_0, \Omega,\ldots))\\
+& = \mathcal{M} +  (\mu+5\log{H_0})(r;  \Omega,\ldots),
+\label{mag:eqn}
+\end{align}
+where $\mathcal{M} = M -5\log{H_0}$, in Friedmann cosmologies
+\begin{align}
 \mu & = 5\log{
 	\left(
-		\frac{(1+r)\chi(r)}{10 \text pc}
+		\frac{(1+s_{\odot})\chi(r; H_0, \Omega,\ldots)}{10 \text pc}
 	\right)
 },
 \end{align}
-where $M$ is the absolute magnitude and
- $r$ is the redshift that
-we use as a cosmological distance.  
-\begin{itemize}
-\item The radial component $v$ of the peculiar velocity  can be derived from the above through
-the Doppler redshift $z_p$.
+and the combination $\mu+5\log{H_0}$ is independent of $H_0$.  (The $s_{\odot}$ is a reminder that the the galaxy and the sun's peculiar
+velocities contribute to time dilation and redshift.)
+It happens that a large set of observational 
+data gives tight constraints on $\mathcal{M}$, whereas uncertainties on $M$ and $H_0$ individually are
+rather large.   Eq.~\ref{mag:eqn} gives the transformation
+between the observed $m$ to the cosmological distances $r(m; \mathcal{M}, \Omega,\ldots)$, which does not explicitly depend on $H_0$.
+At low redshifts where the linear Hubble law applies
+\begin{equation}
+r(\mathcal{M}) \approx 10^
+{
+\frac{(m-\mathcal{M})}{5}
+}.
+\end{equation}
+Although not always notated as such, keep in mind that $r$ depends on $\mathcal{M}$ and the cosmological
+parameters $\Omega, \ldots$, but not $M$ or $H_0$.
+
+Any difference between the observed $s$ and cosmological $r$ redshifts can be described as
+a
+``peculiar velocity''.
+The radial component $v$ of the peculiar velocity  can be derived from the above through
+the Doppler redshift $z_p$,
 \begin{align}
-z_p & = \frac{s-r}{1+r}\\
+z_p & = \frac{s-r}{1+r},\\
 v & = \frac{(1+z_p)^2-1}{(1+z_p)^2+1}.
 \end{align}
-\end{itemize}
+Note that in the linear regime the only parameter-dependence of the peculiar velocity is on $\mathcal{M}$, which is well
+constrained from external observations.
+The standard candles we are thinking about are at low-redshift, so it is useful to think of the velocities as being
+in velocity units.
+Peculiar velocities are useful to consider because theory (fluid dynamics) directly relates velocity flows with density perturbations
+as will be discussed in \S\ref{fluid:sec}.
 
-Given a cosmological model, a standard candle with magnitude $m$ is expected
-to be at redshift $r$.  Any difference between that and the observer redshift $s$ is a
-``peculiar velocity''.
-It is useful to consider an alternative point of view.   Given a cosmological model, a standard candle with observed
-redshift $s$ is expected to have magnitude $M+\mu(s)$.
-Any difference between that and the observer magnitude $m$ is a
-``peculiar magnitude'' $\delta m$.  Since $m$ is directly measured, it is convenient to work with
-peculiar magnitudes in the analysis.
-At low-redshift,  the peculiar velocity and peculiar magnitude
-are related by
+
+It is useful to consider an alternative point of view, where 
+any difference between the observed $m$ and model-expected $\mathcal{M} + (\mu(s)+5\log{H_0})$ magnitudes
+can be described as
+a ``peculiar magnitude''  $\delta m$.  A peculiar velocity $v$ can be alternatively be attributed to 
+the peculiar magnitude via
 \begin{align}
-\delta m & \approx -\frac{5}{\ln{10}}\frac{v}{aH\chi(r)}\\
-& = -\frac{5}{\ln{10}}\frac{(1+r)^2v}{Hd_L(r)}. 
+\delta m & = -\frac{5}{\ln{10}}\frac{(1+r)^2v}{Hd_L(r)}. 
 \end{align}
-
+Since $m$ is directly measured, it is convenient to work with
+peculiar magnitudes in the analysis, while transforming theory velocity predictions into peculiar magnitude predictions.
 
 
 While the data provides both real and redshift-space distances $r$ and $s$ the uncertainty in
@@ -102,8 +124,8 @@ $s$, when determined spectroscopically, is exceedingly small compared to the unc
 Uncertainties in the absolute magnitude  $M$ in particular limit how well $r$ can be
 determined.  So the data is most naturally considered in redshift-space.
 
-\section{Velocities and Overdensities Connected Through Fluid Mechanics}
-
+\section{Relation Between Velocities and Overdensities}
+\label{fluid:sec}
 The motion of the cosmological (incompressible) pressureless matter
 fluid depends on overdensitites as described by the continuity, Euler
 (momentum conservation), and Poisson equations
@@ -116,6 +138,7 @@ fluid depends on overdensitites as described by the continuity, Euler
 \begin{equation}
 \nabla^2\phi=\frac{3}{2} \Omega_MH^2a^2\delta.
 \end{equation}
+The spatial derivatives are in comoving coordinates  $\mathbf{x}$ with length units.
 
 The first two  equations to linear order are.
 \begin{equation}
@@ -130,13 +153,12 @@ Two important implication of the linear equations are:
 \item The peculiar velocity $\mathbf{v}$ today is irrotationlal. The Euler equation gives that the rotational component of $\mathbf{v}$ goes as $a^{-1}$ and so decays away.
 \item The density field can be separated
 \begin{equation}
-\delta (\mathbf{r},\tau)  = D(\tau) \delta (\mathbf{r},\tau_0),
+\delta (\mathbf{x},\tau)  = D(\tau) \delta (\mathbf{x},\tau_0),
 \end{equation}
-$D(\tau)$ is called the linear growth factor.  The second order differential equation
-gives two solutions for $D$, it is taken as the growing mode.
-For calculations $\tau_0$ is often taken to be at the surface of last scattering;
-to simplify notation it is omitted from here on.
-\item Then the continuity equation can be expressed in terms of $D$
+$D(\tau)$ is  the linear growth factor.  $D$ has two solutions, we consider only the growing solution.
+The notation  $\delta (\mathbf{x})$ without the time dependence is understood to be the density field at
+some fiducial $\tau_0$.  Often we considered the density field today or at the surface of last scattering.
+\item The continuity equation can be expressed in terms of $D$
 \begin{equation}
 Haf\delta(\mathbf{r}) + \nabla \cdot \mathbf{v}=0,
 \label{rv:eqn}
@@ -144,33 +166,53 @@ Haf\delta(\mathbf{r}) + \nabla \cdot \mathbf{v}=0,
 where
 \begin{equation}
 f \equiv \frac{d \ln{D}}{d\ln{a}}.
+\label{f:eqn}
 \end{equation}
-This equation says that the density perturbations at the surface of last scattering $\delta(\mathbf{r})$
-is related to the resulting evolved peculiar velocity field with a factor $Haf$.
+This equation says that at any given $\tau$, density perturbations  $\delta(\mathbf{r})$
+are related to the peculiar velocity field with a factor $Haf$.
 \end{itemize}
 
-\section{Fourier Space}
 In Fourier space, Eq.~\ref{rv:eqn} becomes
 \begin{equation}
 Haf\delta(\mathbf{k})  + \mathbf{k} \cdot \mathbf{v}(\mathbf{k})=0,
 \end{equation}
 which has the solution
 \begin{equation}
- \mathbf{v}(\mathbf{k},r) = Haf \frac{i\mathbf{k}}{k^2} \delta(\mathbf{k},r).
+ \mathbf{v}(\mathbf{k},x) = Haf \frac{i\mathbf{k}}{k^2} \delta(\mathbf{k},x).
 \end{equation}
 The Fourier transform of the projected radial velocity is then
 \begin{align}
-v(\mathbf{k},r) & = Haf \frac{i\mu}{k} \delta(\mathbf{k},r)\\
-&  Haf \frac{i\mu}{k} D(r) \delta(\mathbf{k}),
-\label{dvfourier:eqn}
+v(\mathbf{k},x) & = Haf \frac{i\mu}{k} \delta(\mathbf{k},x)\\
+&=  Haf \frac{i\mu}{k} D(r) \delta(\mathbf{k}),
+\label{dvfourier_Mpc:eqn}
 \end{align}
 where $\mu = \mathbf{\hat{r}} \cdot \mathbf{\hat{k}}$ that describes the angle between the line of sight and the wave vector
-and $\delta(\mathbf{k}) = \delta(\mathbf{k},r=0)$, $D(0)=1$.
+and the overdensity is at some reference redshift $r_0$ such that $\delta(\mathbf{k}) = \delta(\mathbf{k},r=r_0)$, $D(r_0)=1$.
+
+The above standard result is seen everywhere, but is not quite ready for our practical use.
+The equations above are set up such that distances are measured in
+comoving length coordinates (e.g.\ Mpc) with the density and velocity fields functions of $\mathbf{x}$.
+The above $k$ have units of inverse length  (e.g.\ Mpc$^{-1}$).
+However we take the convention of expressing distances in terms of redshift  with the density and velocity fields functions of $\mathbf{r}$.
+Since $\nabla_x = H_0 \nabla_r$,
+\begin{equation}
+Haf\delta(\mathbf{k})  + H_0 \mathbf{k} \cdot \mathbf{v}(\mathbf{k})=0,
+\end{equation}
+which has the solution
+\begin{equation}
+ \mathbf{v}(\mathbf{k},r) = \frac{H}{H_0}af \frac{i\mathbf{k}}{k^2} \delta(\mathbf{k},r).
+\end{equation}
+The Fourier transform of the projected radial velocity is then
+\begin{align}
+v(\mathbf{k},r) & = \frac{H}{H_0}af \frac{i\mu}{k} \delta(\mathbf{k},r)\\
+&=  \frac{H}{H_0}af \frac{i\mu}{k} D(r) \delta(\mathbf{k}),
+\label{dvfourier:eqn}
+\end{align}
 
 
 For our purposes, we are interested in the statistical properties of the fields.  When the fields are Normally distributed
 (in the linear regime) these properties are
-captured by the power spectra at $r=0$.
+captured by the power spectra at the fiducial $r_0$.
 \begin{align}
 \langle \delta(\mathbf{k},r)  \delta^{\star}(\mathbf{k'},r') \rangle &  = (2\pi)^3 D(r) D(r') P_{\delta \delta}(\mathbf{k}) \delta(\mathbf{k} -\mathbf{k'})\\ 
 \langle \delta(\mathbf{k},r)  v^{\star}(\mathbf{k'},r') \rangle &  = (2\pi)^3 D(r) D(r') P_{\delta v}(\mathbf{k}, \mathbf{\hat{r}'}) \delta(\mathbf{k} -\mathbf{k'})\\ 
@@ -179,42 +221,81 @@ captured by the power spectra at $r=0$.
 
 From Eq.~\ref{dvfourier:eqn} the above power spectra are related
 \begin{equation}
- P_{\delta \delta}(\mathbf{k})  = -\left( \frac{ik}{\mu' H(r')a(r')f(r')}\right) P_{\delta v}(\mathbf{k}, \mathbf{r'}) \ = k^2 \left( \frac{1}{\mu H(r)a(r)f(r)}\right)
- \left( \frac{1}{\mu' H(r')a(r')f(r')}\right)  P_{vv}(\mathbf{k},\mathbf{r},\mathbf{r'}).
-\end{equation}
-
-The above calculations were done in real space, whereas we make our measurements in redshift space.  To first order
-the relationship between the real-space and redshift-space velocity
-power spectra and the real-space density power spectrum is the same.
-\begin{equation}
-P^s_{vv}(\mathbf{k}, \mathbf{s}, \mathbf{s'}) \approx P_{vv}(\mathbf{k}, \mathbf{r}, \mathbf{r'}) .
+ P_{\delta \delta}(\mathbf{k})  = -\left( \frac{ikH_0}{\mu' H(r')a(r')f(r')}\right) P_{\delta v}(\mathbf{k}, \mathbf{r'}) \ = k^2 \left( \frac{H_0}{\mu H(r)a(r)f(r)}\right)
+ \left( \frac{H_0}{\mu' H(r')a(r')f(r')}\right)  P_{vv}(\mathbf{k},\mathbf{r},\mathbf{r'}).
 \end{equation}
 
 The  velocity correlation function is then
 \begin{align}
 \xi_{v v}(\mathbf{r}_i,\mathbf{r}_j)  & =
 \langle v(\mathbf{r})  v^{\star}(\mathbf{r'}) \rangle \\
-& = D(r_i) D(r_j)  H(r_i) H(r_j) a(r_i) a(r_j) f(r_i) f(r_j)
+& = D(r_i) D(r_j)  \frac{H(r_i)}{H_0} \frac{H(r_j)}{H_0} a(r_i) a(r_j) f(r_i) f(r_j)
 \int \frac{d^3k}{(2\pi)^3}  \frac{1}{k^2} P_{\delta \delta}(k) 
 (\mathbf{\hat{k}} \cdot \mathbf{\hat{r}_i})(\mathbf{\hat{k}} \cdot \mathbf{\hat{r}_j})
 e^{-i \mathbf{k}\cdot (\mathbf{r_i}-\mathbf{r_j})} \\
-&= \frac{dD_i}{d\tau} \frac{dD_j}{d\tau}   \int \frac{d^3k}{(2\pi)^3}  \frac{1}{k^2}  P_{\delta \delta}(k) (\mathbf{\hat{k}} \cdot \mathbf{\hat{r}_i})(\mathbf{\hat{k}} \cdot \mathbf{\hat{r}_j})  e^{-i \mathbf{k}\cdot (\mathbf{r_i}-\mathbf{r_j})}\\
-&= \frac{dD_i}{d\tau} \frac{dD_j}{d\tau}   \int \frac{d^3k}{(2\pi)^3}  \frac{1}{k^2}  P_{\delta \delta}(k) \sum_{l=0}^{\infty}(2l+1) j'_l(kr_i) j'_l(kr_j)
+&= H_0^{-2}\frac{dD_i}{d\tau} \frac{dD_j}{d\tau}   \int \frac{d^3k}{(2\pi)^3}  \frac{1}{k^2}  P_{\delta \delta}(k) (\mathbf{\hat{k}} \cdot \mathbf{\hat{r}_i})(\mathbf{\hat{k}} \cdot \mathbf{\hat{r}_j})  e^{-i \mathbf{k}\cdot (\mathbf{r_i}-\mathbf{r_j})}\\
+&= H_0^{-2} \frac{dD_i}{d\tau} \frac{dD_j}{d\tau}   \int \frac{d^3k}{(2\pi)^3}  \frac{1}{k^2}  P_{\delta \delta}(k) \sum_{l=0}^{\infty}(2l+1) j'_l(kr_i) j'_l(kr_j)
 \mathcal{P}_l(\mathbf{\hat{r}}_i \cdot \mathbf{\hat{r}}_j).
 \end{align}
-The last step takes
+The last step uses the decomposition
 \begin{equation}
 (\mathbf{\hat{k}} \cdot \mathbf{\hat{r}_j})   e^{i \mathbf{k}\cdot \mathbf{r_j}} = 4\pi \sum_{l,m} i^{l-1}j'_l(kr) Y^{\star}_{lm}(\mathbf{\hat{k}})
-Y_{lm}(\mathbf{\hat{r}}_2)
+Y_{lm}(\mathbf{\hat{r}}_j).
 \end{equation}
 
-In terms of peculiar magnitudes for two positions
-$\mathbf{r}_i$ and $\mathbf{r}_j$.  To first order 
+The correlation for the peculiar magnitudes at two positions
+$\mathbf{r}_i$ and $\mathbf{r}_j$ is to first order 
 \begin{align}
 \xi_{\delta m \delta m}(\mathbf{r}_i,\mathbf{r}_j)  & \equiv  \langle \delta m_i(\mathbf{r}_i) \delta m_j(\mathbf{r}_j) \rangle\\
-& =  \left( \frac{5}{\ln{10}}\right)^2 \frac{(1+r_i)^2}{Hd_L(r_i)} \frac{(1+r_j)^2}{Hd_L(r_j)} \xi_{v v}(\mathbf{r}_i,\mathbf{r}_j)  .
+& =  \left( \frac{5}{\ln{10}}\right)^2  H_0^{-2}\frac{(1+r_i)^2}{H(r_i)d_L(r_i)} \frac{(1+r_j)^2}{H(r_j)d_L(r_j)} \xi_{v v}(\mathbf{r}_i,\mathbf{r}_j)  \\
+& =  \left( \frac{5}{\ln{10}}\right)^2 \frac{f(r_i)D(r_i)}{(1+r_i)H_0d_L(r_i)} \frac{f(r_j)D(r_j)}{(1+r_j)H_0d_L(r_j)}  \\
+& \times  \int \frac{d^3k}{(2\pi)^3}  \frac{1}{k^2}  P_{\delta \delta}(k) \sum_{l=0}^{\infty}(2l+1) j'_l(kr_i) j'_l(kr_j)
+\mathcal{P}_l(\mathbf{\hat{r}}_i \cdot \mathbf{\hat{r}}_j).
 \end{align}
 
-While the above derivation is based on $\chi(r)$ , the difference when using 
- $\chi(s)$  is of second order.
+There is the tradition of expressing the normalization of the power spectrum in terms of
+the variance in the mass overdensity in 8 Mpc spheres 
+\begin{align}
+\sigma^2_8 (r)& = \frac{1}{2\pi^2} \int_0^\infty  k^2 D^2(r)  P_{\delta \delta}(k) \tilde{W_8}(k)^2 dk
+\label{sigma_8:eqn}
+\end{align}
+where $\tilde{W_8}$ is the Fourier transform of the comoving 8 Mpc top-hat filter.
+As equivalent normalization factors, $\sigma_8$ can be used in place of $D$.
+
+The CMB provides an excellent measure of $P_{\delta \delta}(k)$ in the same velocity-as-length units as adopted
+for the measurements.  So we take that as a given.
+
+We see that a
+peculiar magnitude measurement at redshift $r$ is sensitive to the combination
+\begin{equation}
+\frac{f(r(\mathcal{M}, \Omega,\ldots)) \sigma_8(r(\mathcal{M}, \Omega,\ldots))}{H_0 d_L(r(\mathcal{M}, \Omega,\ldots); H_0, \Omega,\ldots)}=
+\frac{f(r(\mathcal{M}, \Omega,\ldots)) \sigma_8(r(\mathcal{M}, \Omega,\ldots))}{(H_0 d_L)(r(\mathcal{M}, \Omega,\ldots); \Omega,\ldots)},
+\end{equation}
+given that the combination $H_0 d_L$ is independent of the Hubble constant.
+At low redshift where we take a linear Hubble law as given, we find that our peculiar velocities derived from a standard candle and
+a fiducial power spectrum, say that inferred by the CMB,
+give a measurement of $f(r)\sigma_8(r)$ with a dependence on the parameter $\mathcal{M}$.
+ 
+\section{Redshift Space}
+The above calculations were done in real space, whereas we make our measurements in redshift space.  To first order
+the relationship between the real-space and redshift-space velocity
+power spectra and the real-space density power spectrum is the same.
+\begin{equation}
+P^s_{vv}(\mathbf{k}, \mathbf{s}, \mathbf{s'}) \approx P_{vv}(\mathbf{k}, \mathbf{s}, \mathbf{s'}) .
+\end{equation}
+When using this approximation, we want to avoid regimes where the real- and velocity-space distances may be significantly different,
+e.g.\ where $s \lesssim 5000$ km s$^{-1}$.
+
+\section{Testing Gravity}
+Theory gives a prediction for the expected values of $(f(r) \sigma_8(r))$.
+Introducing the parameter $\gamma$ such that
+\begin{equation}
+f= \Omega_M^\gamma,
+\end{equation}
+it is known that General Relativity is well described by $\gamma \approx 0.55$ and that other gravity models can 
+be described by different values of $\gamma$;  $D(r)$ can  be determined using Eq.~\ref{f:eqn};
+$\sigma_8(r)$ can be determined using Eq.~\ref{sigma_8:eqn}.
+
+
+
 \end{document}  
