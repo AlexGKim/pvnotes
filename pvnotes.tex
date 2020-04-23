@@ -6,6 +6,7 @@
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{amsmath,amssymb}
+\usepackage{verbatim}
 
 \title{Peculiar Velocity Notes}
 \author{Alex Kim}
@@ -35,11 +36,11 @@ The proper peculiar velocity of a galaxy at position $\mathbf{r}_o$ is
 where $\tau$ is the conformal time.  ``Proper'' means that it is the velocity as
 measured by a local observer.
 
-An observer positioned at $\mathbf{r}_o$ between us and the galaxy receives galaxy
-light with  Doppler redshift $z_v$ due to the radial
-velocity component $v=\mathbf{v} \cdot  \mathbf{\hat{r}}_o$.
-That light getting to us also experiences the cosmological redshift, so  the redshift $s$
-arriving to the CMB-frame observer is 
+A galaxy photon moving in the direction $-\mathbf{\hat{r}}_o$ will have
+a   Doppler redshift $z_v$ due to the radial
+velocity component $v=\mathbf{v} \cdot  \mathbf{\hat{r}}_o$ for the observer at $\mathbf{r}_o$.
+That photon undergoes a further cosmological redshift so the redshift $s$
+arriving to us (neglecting our peculiar motion, i.e.\ in the CMB frame) is 
 \begin{equation}
 (1+s)  = (1+r)(1+z_p).
 \end{equation}
@@ -47,7 +48,9 @@ For low redshift and small peculiar velocities the first order expression is
 \begin{equation}
 s  = r +v.
 \end{equation}
-In this domain people often express $r$ and $z_p$ in velocity units.
+
+The standard is for distances to be given in units $[\text{Mpc}\,h^{-1}]$.  Multiplying
+by 100 converts from these units  to $[\text{km}\,\text{s}^{-1}]$.
 
 
 \section{Standard Candle Information}
@@ -140,6 +143,7 @@ fluid depends on overdensitites as described by the continuity, Euler
 \end{equation}
 The spatial derivatives are in comoving coordinates  $\mathbf{x}$ with length units.
 
+\subsection{Linear Order in Velocity}
 The first two  equations to linear order are.
 \begin{equation}
 \frac{\partial \delta}{\partial \tau} + \nabla \cdot \mathbf{v}=0
@@ -160,7 +164,7 @@ The notation  $\delta (\mathbf{x})$ without the time dependence is understood to
 some fiducial $\tau_0$.  Often we considered the density field today or at the surface of last scattering.
 \item The continuity equation can be expressed in terms of $D$
 \begin{equation}
-Haf\delta(\mathbf{r}) + \nabla \cdot \mathbf{v}=0,
+Haf\delta(\mathbf{x}) + \nabla \cdot \mathbf{v}=0,
 \label{rv:eqn}
 \end{equation}
 where
@@ -189,10 +193,29 @@ v(\mathbf{k},x) & = Haf \frac{i\mu}{k} \delta(\mathbf{k},x)\\
 where $\mu = \mathbf{\hat{r}} \cdot \mathbf{\hat{k}}$ that describes the angle between the line of sight and the wave vector
 and the overdensity is at some reference redshift $r_0$ such that $\delta(\mathbf{k}) = \delta(\mathbf{k},r=r_0)$, $D(r_0)=1$.
 
-The above standard result is seen everywhere, but is not quite ready for our practical use.
-The equations above are set up such that distances are measured in
+The above  result is shown in textbooks, but is not actually what
+we want to use.
+The above equations  are set up such that distances are measured in
 comoving length coordinates (e.g.\ Mpc) with the density and velocity fields functions of $\mathbf{x}$.
-The above $k$ have units of inverse length  (e.g.\ Mpc$^{-1}$).
+However, since we observe redshifts more often than distances,
+the standard in the field is to use length coordinates with units Mpc\,$h^{-1}$, i.e.\ $\mathbf{r} = h^{-1}\mathbf{x}$.
+Then $\nabla_r = h \nabla_x$,
+and the continuity equation becomes
+\begin{equation}
+Haf\delta(\mathbf{r}) + h \nabla \cdot \mathbf{v}=0,
+\label{rv_h:eqn}
+\end{equation}
+and so
+\begin{align}
+v(\mathbf{k},x 
+&=  h^{-1} Haf\frac{i\mu}{k} D(r) \delta(\mathbf{k})\\
+&=  100  \frac{H}{H_0}af \frac{i\mu}{k} D(r) \delta(\mathbf{k}),
+\label{dvfourier_Mpchinv:eqn}
+\end{align}
+with the velocities in $[\text{km}\,\text{s}^{-1}]$ units.
+Working in redshift space removes dependence on the value of the Hubble constant.
+
+\begin{comment}
 However we take the convention of expressing distances in terms of redshift  with the density and velocity fields functions of $\mathbf{r}$.
 Since $\nabla_x = H_0 \nabla_r$,
 \begin{equation}
@@ -208,6 +231,28 @@ v(\mathbf{k},r) & = \frac{H}{H_0}af \frac{i\mu}{k} \delta(\mathbf{k},r)\\
 &=  \frac{H}{H_0}af \frac{i\mu}{k} D(r) \delta(\mathbf{k}),
 \label{dvfourier:eqn}
 \end{align}
+\end{comment}
+
+\subsection{Linear Order in Momentum}
+Defining the momentum field as
+\begin{equation}
+\mathbf{p} = (1+\delta)\mathbf{v}
+\end{equation}
+we see that the continuity equation gives 
+\begin{equation}
+\frac{\partial \delta}{\partial \tau} + \nabla \cdot \mathbf{p}=0
+\end{equation}
+
+
+
+\section{Statistical Measure}
+
+We are interested in the statistical properties of peculiar velocities, in particular their correlation function or equivalently
+their power spectrum.  Although we measure the peculiar velocity of individual galaxies, combining velocities of the galaxies
+actually observed, whose locations are weighted by density, leads to a statistical measurement of the peculiar momentum field.
+This is easily seen in power-spectrum space, where the Fourier integral over volume is approximated by a sum
+over the observed galaxies.  The observed galaxies come from a biased distribution. Viewed the other way, a straight
+sum over the galaxies means that the Fourier transform is done over velocities weighted by density.
 
 
 For our purposes, we are interested in the statistical properties of the fields.  When the fields are Normally distributed
@@ -219,11 +264,20 @@ captured by the power spectra at the fiducial $r_0$.
 \langle v(\mathbf{k},r)  v^{\star}(\mathbf{k'},r') \rangle &  = (2\pi)^3 D(r) D(r') P_{vv}(\mathbf{k},  \mathbf{\hat{r}}, \mathbf{\hat{r}'}) \delta(\mathbf{k} -\mathbf{k'}).
 \end{align}
 
-From Eq.~\ref{dvfourier:eqn} the above power spectra are related
+From Eq.~\ref{dvfourier_Mpchinv:eqn} the above power spectra are related
+%\begin{equation}
+% P_{\delta \delta}(\mathbf{k})  = -\left( \frac{ikH_0}{\mu' H(r')a(r')f(r')}\right) P_{\delta v}(\mathbf{k}, \mathbf{r'}) \ = k^2 \left( \frac{H_0}{\mu H(r)a(r)f(r)}\right)
+% \left( \frac{H_0}{\mu' H(r')a(r')f(r')}\right)  P_{vv}(\mathbf{k},\mathbf{r},\mathbf{r'}).
+%\end{equation}
 \begin{equation}
- P_{\delta \delta}(\mathbf{k})  = -\left( \frac{ikH_0}{\mu' H(r')a(r')f(r')}\right) P_{\delta v}(\mathbf{k}, \mathbf{r'}) \ = k^2 \left( \frac{H_0}{\mu H(r)a(r)f(r)}\right)
- \left( \frac{H_0}{\mu' H(r')a(r')f(r')}\right)  P_{vv}(\mathbf{k},\mathbf{r},\mathbf{r'}).
+ P_{vv}(\mathbf{k})  = k^{-2} \left( \frac{\mu H(r)a(r)f(r)}{H_0}\right)
+ \left( \frac{\mu' H(r')a(r')f(r')}{H_0}\right)  P_{\delta\delta}(\mathbf{k},\mathbf{r},\mathbf{r'}).
 \end{equation}
+\begin{equation}
+ P_{\delta v}(\mathbf{k})  = k^{-1}
+ \left( \frac{\mu' H(r')a(r')f(r')}{H_0}\right)  P_{\delta\delta}(\mathbf{k},\mathbf{r},\mathbf{r'}).
+\end{equation}
+
 
 The  velocity correlation function is then
 \begin{align}
@@ -248,7 +302,7 @@ $\mathbf{r}_i$ and $\mathbf{r}_j$ is to first order
 \begin{align}
 \xi_{\delta m \delta m}(\mathbf{r}_i,\mathbf{r}_j)  & \equiv  \langle \delta m_i(\mathbf{r}_i) \delta m_j(\mathbf{r}_j) \rangle\\
 & =  \left( \frac{5}{\ln{10}}\right)^2  H_0^{-2}\frac{(1+r_i)^2}{H(r_i)d_L(r_i)} \frac{(1+r_j)^2}{H(r_j)d_L(r_j)} \xi_{v v}(\mathbf{r}_i,\mathbf{r}_j)  \\
-& =  \left( \frac{5}{\ln{10}}\right)^2 \frac{f(r_i)D(r_i)}{(1+r_i)H_0d_L(r_i)} \frac{f(r_j)D(r_j)}{(1+r_j)H_0d_L(r_j)}  \\
+& =  \left( \frac{5}{\ln{10}}\right)^2 \frac{(1+r_i)f(r_i)D(r_i)}{H_0d_L(r_i)} \frac{(1+r_j)f(r_j)D(r_j)}{H_0d_L(r_j)}  \\
 & \times  \int \frac{d^3k}{(2\pi)^3}  \frac{1}{k^2}  P_{\delta \delta}(k) \sum_{l=0}^{\infty}(2l+1) j'_l(kr_i) j'_l(kr_j)
 \mathcal{P}_l(\mathbf{\hat{r}}_i \cdot \mathbf{\hat{r}}_j).
 \end{align}
