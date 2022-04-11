@@ -350,6 +350,182 @@ it is known that General Relativity is well described by $\gamma \approx 0.55$ a
 be described by different values of $\gamma$;  $D(r)$ can  be determined using Eq.~\ref{f:eqn};
 $\sigma_8(r)$ can be determined using Eq.~\ref{sigma_8:eqn}.
 
+\section{Fisher Calculation}
+Let us consider a simple model.
+The growth of structure is
+parameterized by $\gamma$ and $\Omega_{M0}$, from which 
+$f(a)$ and $D(a)$ are calculated,
+or alternatively by effective
+$bD$ and $fD$.
+Galaxy bias is parameterized by $b$.
+Taking the universe to be periodic
+on a very large scale $L$, 
+the overdensity field at
+can be
+described by a finite set
+of values
+at grid of points in 3-dimensional
+$k$-space, $\delta_{\mathbf{k}} = D(a) |\delta^{\text{CMB}}_{\mathbf{k}}| e^{i\phi_{\mathbf{k}}}$,
+which is parameterized by
+$|\delta^{\text{CMB}}_{\mathbf{k}}|$
+and $\phi_{\mathbf{k}}$ up to some
+$k_{\text{max}}$.  The galaxy
+overdensity field is
+\begin{equation}
+    \delta^g(\mathbf{x}) = bD \sum_{\mathbf{k}} |\delta^{\text{CMB}}_\mathbf{k}| \cos{\left(\frac{2\pi \mathbf{k} \cdot \mathbf{x}}{L} + \phi_\mathbf{k}\right)}.
+\end{equation}
+and the peculiar magnitude field is
+\begin{align}
+       m(\mathbf{x})
+       & = \frac{5}{\ln{10}}\frac{fD}{ad_L} \sum_{\mathbf{k}}
+       \frac{\mu}{k} |\delta^{\text{CMB}}_\mathbf{k}| \sin{\left(\frac{2\pi \mathbf{k} \cdot \mathbf{x}}{L} + \phi_\mathbf{k}\right)}.
+\end{align}
 
+Assuming Gaussian measurement
+errors, the likelihood for
+the observations $\delta_g$
+and $m$ is
+\begin{align}
+    L& =\sum_\mathbf{k} L_k\\
+    L_\mathbf{k}& = \int d|\delta^{\text{CMB}}_\mathbf{k}| d\phi_\mathbf{k}
+    \mathcal{N}(\delta_g-\delta_g(x),\sigma_{\delta_g})
+    \mathcal{N}(m-m(x),\sigma_m)
+    \mathcal{N}(|\delta^{\text{CMB}}_\mathbf{k}|,P^{\text{CMB}}(k))
+\end{align}
+
+\begin{align}
+     \mathcal{N}(\delta_g-\delta_g(x),\sigma_{\delta_g})& \propto
+         \exp{
+         \left(
+         -
+         \frac{\left(\delta_g-bD \sum_{\mathbf{k}} |\delta^{\text{CMB}}_\mathbf{k}| \cos{\left(\frac{2\pi \mathbf{k} \cdot \mathbf{x}}{L} + \phi_\mathbf{k}\right)}\right)^2}{2\sigma^2_{\delta_g}}
+         \right)}
+\end{align}
+
+At the time of the CMB, the volume
+around us had density fluctuations
+that could be described
+by a grid of points in 3-dimensional
+$k$-space, $\delta^{\text{CMB}}_{\mathbf{k}}$,  where 
+\begin{align}
+    |\delta^{\text{CMB}}_{\mathbf{k}}| & \sim \mathcal{N}\left(0,P^{\text{CMB}}_{\delta\delta}\left(\frac{k}{L}\right)\right).
+\end{align}
+In linear theory the overdensity
+field
+today $\delta_{\mathbf{k}} = |\delta_{\mathbf{k}}|e^{i\phi_{\mathbf{k}}}$ is then described
+by
+\begin{align}
+    |\delta_{\mathbf{k}}| & = D |\delta^{\text{CMB}}_{\mathbf{k}}|
+\\
+    \phi_{\mathbf{k}} & \sim \mathcal{U}(0,2\pi).
+\end{align}
+such that the density field in real space is
+\begin{equation}
+    \delta(\mathbf{x}) = \sum_{\mathbf{k}} |\delta_\mathbf{k}| \cos{\left(\frac{2\pi \mathbf{k} \cdot \mathbf{x}}{L} + \phi_\mathbf{k}\right)}.
+\end{equation}
+Neglecting here redshift space
+distortions
+\begin{equation}
+    \delta^g(\mathbf{x}) = bD \sum_{\mathbf{k}} |\delta^{\text{CMB}}_\mathbf{k}| \cos{\left(\frac{2\pi \mathbf{k} \cdot \mathbf{x}}{L} + \phi_\mathbf{k}\right)}.
+\end{equation}
+
+In linear theory the peculiar
+velocity field along the line of
+sight is (slightly wrong in
+the middle)
+\begin{align}
+   v_\mathbf{k} & = Haf \frac{i\mu}{k} \delta_\mathbf{k}\\
+       v(\mathbf{x}) & = -\sum_{\mathbf{k}} |v_\mathbf{k}| \sin{\left(\frac{2\pi \mathbf{k} \cdot \mathbf{x}}{L} + \phi_\mathbf{k}\right)}\\
+       & = -HafD\sum_{\mathbf{k}}
+       \frac{\mu}{k} |\delta^{\text{CMB}}_\mathbf{k}| \sin{\left(\frac{2\pi \mathbf{k} \cdot \mathbf{x}}{L} + \phi_\mathbf{k}\right)}.
+\end{align}
+
+So now we see how our observables
+$\delta^g$ and $v$ are related to
+our model parameters for
+the underlying overdensity field
+$|\delta^{\text{CMB}}_\mathbf{k}|$
+and $\phi_\mathbf{k}$,
+and the other parameters of interest
+
+\begin{align}
+    P_{\delta \delta}(k; a) &= D^2(a) P_{\delta \delta}(k; a=\text{CMB})\\
+    \delta(\mathbf{k}) & \sim \mathcal{N}\left(P_{\delta \delta}\left(k;a\right)\right)\\
+    \delta^g(\mathbf{k}) & =b\delta(\mathbf{k}) \\
+    \delta^g(\mathbf{r}) & =\text{FT}(\delta^g(\mathbf{k}))\\
+    v(\mathbf{k}) & = Haf \frac{i\mu}{k} \delta(\mathbf{k})\\ 
+    v(\mathbf{r}) & = \text{FT}(v(\mathbf{k}))\\
+    n^g(\mathbf{r})dV &  \sim \text{Poisson}(\bar{n}\delta^g(\mathbf{r})dV)\\
+    v_{\text{GW}} & \sim \mathcal{N}(v(\mathbf{r}),\sigma_v)
+\end{align}
+The diagonal terms of the matrix
+in Equation~\ref{cov:eq} contain
+the autocorrelations in
+galaxy counts and peculiar velocities for a single $k$-mode
+measured in Fourier space as
+predicted
+from the energy correlations measured
+at the CMB.  We include in the velocity shot-noise a 300~km\,s$^{-1}$
+term that represents sources
+of peculiar velocity that are not represented in our model e.g.\ contributions
+from  $k$-modes excluded
+in our calculations.  It does not include errors
+that are in common between galaxy
+counts and velocities, for example
+differences between CAMB predictions
+and the true overdensity field today.
+
+\section{Correlation Function}
+Gorski identified statistics $\psi_1$ and $\psi_2$ based on pairs of observed radial peculiar velocities $u$
+\begin{align}
+\psi_1(r) & = \frac{\sum u_1 u_2 \cos{\theta_{12}}}{\sum \cos^2{\theta_{12}}} \\
+\psi_2(r) & = \frac{\sum u_1 u_2 \cos{\theta_{1}}\cos{\theta_2}}{\sum \cos{\theta_{12} \cos{\theta_{1}} \cos{\theta_{2}}}} 
+\end{align}
+where the $\theta_{12}$ is the angle between $\vec{r}_1$ and $\vec{r}_1$, and $\theta_i$ is the angle between $\vec{r}_i$ and $\vec{r}_2-\vec{r}_1$.
+
+Gorski takes these functions in the continuous field limit of large $N$, where the summation is replaced with integrals over the two positions,
+delta-functions to pick out those pairs with the correct $r$, and the probability of selecting a galaxy, which includes the survey
+selection function and intrinsic density contrast.  If one then neglects the intrinsic density contrast, which means the
+absence of strong clustering of the galaxies, the expectation values
+of $\psi$'s can be expressed in a convenient form.
+
+The $\langle u_1 u_2 \rangle$ contribution comes as follows:
+The expectation of the
+two-point correlation tensor of the peculiar velocity field at positions $1$ and $2$ averaged over all possible realizations
+is denoted as
+\begin{equation}
+\Psi_{ij}(\vec{r}_1, \vec{r}_2)=\langle v_i(\vec{r}_1) v_j(\vec{r}_2)\rangle.
+\end{equation}
+For an irrotational, homogeneous, and isotropic universe this can be expressed
+\begin{equation}
+\Psi_{ij}(r)=[\Psi_\parallel(r)-\Psi_\perp(r)] \hat{r}_{i} \hat{r}_{j} + \Psi_\perp(r) \delta^K_{ij}
+\end{equation}
+where $\vec{r}=|\vec{r}_1- \vec{r}_2|$.
+[Turner et al.\ has a typo.]
+The  radial peculiar velocity correlation can be determined from the above by applying some dot products
+\begin{equation}
+\langle u_1 u_2 \rangle = \Psi_\perp \cos{\theta_{12}} + [\Psi_\parallel - \Psi_\perp] \cos{\theta_1} \cos{\theta_2}.
+\end{equation}
+$\Psi_\parallel(r)$ and $\Psi_\perp(r)$ can be calculated given a power spectrum.
+
+By neglecting the density contrast, all the other terms are geometric and do not depend on ensemble averaging.
+Introducing
+\begin{align}
+\mathcal{A}(r) &=\frac{ \int_V d^3r_1 d^3r_2 \delta_D(|r_2-r_1|-r) \phi(r_1)\phi(r_2)  \cos{\theta_1}\cos{\theta_2}\cos{\theta_{12}}}
+{ \int_V d^3r_1 d^3r_2 \delta_D(|r_2-r_1|-r) \phi(r_1)\phi(r_2)  \cos^2{\theta_{12}}}\\
+\mathcal{B}(r) &= \frac{ \int_V d^3r_1 d^3r_2 \delta_D(|r_2-r_1|-r) \phi(r_1)\phi(r_2)  \cos^2{\theta_1}\cos^2{\theta_2}}
+{ \int_V d^3r_1 d^3r_2 \delta_D(|r_2-r_1|-r) \phi(r_1)\phi(r_2)  \cos{\theta_1}\cos{\theta_2}\cos{\theta_{12}}}
+\end{align}
+the expectation values of the observables are
+\begin{align}
+\langle \psi_1(r) \rangle &= \mathcal{A}(r) \Psi_{\perp}(r) + [1-\mathcal{A}(r)] \Psi_{\parallel} (r)\\
+\langle \psi_2(r) \rangle &= \mathcal{B}(r) \Psi_{\perp}(r) + [1-\mathcal{B}(r)] \Psi_{\parallel} (r)
+\end{align}
+where $\phi$ is the survey selection function.
+Note that in analysis in the literature, $\mathcal{A}$ and $\mathcal{B}$ are approximated using the observed data.
+
+To summarize, the observer statistics $\psi_1$ and $\psi_2$ in some limit and with some assumptions can be
+expressed as a combination of functions of the underlying velocity correlations and functions that describe the survey
+geometry.
 
 \end{document}  
